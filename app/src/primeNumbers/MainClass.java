@@ -8,17 +8,20 @@ import java.util.Scanner;
 public class MainClass {
     public static void main(String[] args) {
         Scanner inputData = new Scanner(System.in);
-        int m = 1;
-        int number;
+        int m = 1; // auxiliary variable
+        int number; // variable which will be checked for being prime number or not
+
         while (m < 100000) { // number of loops
-            System.out.println("Witaj, wprowadź liczbę naturalną od 1 do 10000, a ja powiem Ci, czy liczba jest " +
-                    "pierwsza czy nie");
+            System.out.println("Hi there! Please indicate natural number in range from 1 to 10000, and I will tell " +
+                    "you if this number is prime or not");
             number = inputData.nextInt();
-            while (number <= 0 || number > 10000) {
-                System.out.println("Błąd, liczba musi znajdować się w przedziale od 1 do 10000, spóbuj ponownie ");
+            while (number <= 0 || number > 10000) { // loop which controls if number indicated by user is still within range
+                System.out.println("Error!! Number must be in range from 1 to 10000, please try again");
                 number = inputData.nextInt();
             }
             m++;
+            Result result = new Result(number); // object from Class Result, needed for printing the result in terminal
+            result.resultPrinter(result.isPrime(number), number);
         }
     }
 }
